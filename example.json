@@ -1,0 +1,37 @@
+{
+    "servers": [
+        {
+            "port": "31999", 
+            "host": "192.168.130.19", 
+            "queries": [
+                {
+                    "obj": "java.lang:type=Memory",
+                    "attr": ["HeapMemoryUsage", "NonHeapMemoryUsage"],
+                    "outputWriters": [{
+                        "@class": "com.googlecode.jmxtrans.model.output.GangliaWriter",
+                        "port": 8649,
+                        "host": "192.168.130.19"
+                    }]
+                },
+                {
+                    "obj": "java.lang:type=OperatingSystem",
+                    "attr": ["FreePhysicalMemorySize", "ProcessCpuLoad"],
+                    "outputWriters": [{
+                        "@class": "com.googlecode.jmxtrans.model.output.GangliaWriter",
+                        "port": 8649,
+                        "host": "192.168.130.19"
+                    }]
+                },
+                {
+                    "obj": "cn.edu.thu.tsfiledb.service:type=Monitor",
+                    "attr": ["DataSizeInByte"],
+                    "outputWriters": [{
+                        "@class": "com.googlecode.jmxtrans.model.output.GangliaWriter",
+                        "port": 8649,
+                        "host": "192.168.130.19"
+                    }]
+                }                
+            ]
+        }
+    ]
+}
